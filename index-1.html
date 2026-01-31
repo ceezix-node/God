@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GOD v2.0 - Advanced AI with Voice, Live Mode, and Multiple Characters">
+    <meta name="theme-color" content="#1a0033">
+    <title>GOD v2.0 - Advanced AI</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="loader" class="loader">
+        <div class="loader-symbol">∞</div>
+        <p>Awakening AI...</p>
+    </div>
+
+    <div id="app" class="hidden">
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">∞</div>
+                <div>
+                    <h1>GOD v2.0</h1>
+                    <p class="subtitle">Advanced AI Assistant</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="status" id="status">
+                    <span class="status-dot"></span>
+                    <span id="status-text">Ready</span>
+                </div>
+                <button id="live-mode" class="btn-icon" title="Live Mode">🎙️</button>
+            </div>
+        </header>
+
+        <div class="characters">
+            <button class="character active" data-char="god">🌟 GOD</button>
+            <button class="character" data-char="philosopher">🧙 Philosopher</button>
+            <button class="character" data-char="scientist">🔬 Scientist</button>
+            <button class="character" data-char="creative">🎨 Creative</button>
+            <button class="character" data-char="teacher">📚 Teacher</button>
+            <button class="character" data-char="companion">💬 Friend</button>
+        </div>
+
+        <main class="main">
+            <div id="chat" class="chat">
+                <div class="welcome">
+                    <div class="welcome-icon">🌟</div>
+                    <h2>Welcome!</h2>
+                    <p>I'm your advanced AI assistant with voice capabilities and multiple personalities.</p>
+                    <div class="features">
+                        <span>🎙️ Voice Chat</span>
+                        <span>🤖 Smart AI</span>
+                        <span>⚡ Real-time</span>
+                        <span>🔒 Private</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <div id="voice-viz" class="voice-viz hidden">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <span id="voice-status">Listening...</span>
+                </div>
+
+                <div class="input-box">
+                    <textarea id="input" placeholder="Type your message..." rows="1"></textarea>
+                    <div class="actions">
+                        <button id="voice-btn" class="btn-icon" title="Voice">🎤</button>
+                        <button id="tts-btn" class="btn-icon active" title="TTS">🔊</button>
+                        <button id="clear-btn" class="btn-icon" title="Clear">🗑️</button>
+                        <button id="send-btn" class="btn-primary">Send →</button>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <button class="quick-btn" data-msg="Explain quantum physics simply">⚛️ Quantum</button>
+                    <button class="quick-btn" data-msg="Tell me a creative story">📖 Story</button>
+                    <button class="quick-btn" data-msg="Help me solve a problem">🧮 Problem</button>
+                    <button class="quick-btn" data-msg="What is consciousness?">🧠 Consciousness</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <button id="settings-btn" class="btn-footer">⚙️ Settings</button>
+            <button id="export-btn" class="btn-footer">💾 Export</button>
+            <button id="install-btn" class="btn-footer hidden">📲 Install</button>
+        </footer>
+    </div>
+
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⚙️ Settings</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting">
+                    <label>Ollama Endpoint:</label>
+                    <input type="text" id="ollama-url" value="http://localhost:11434">
+                </div>
+                <div class="setting">
+                    <label>Model:</label>
+                    <select id="model">
+                        <option value="llama3">Llama 3 (8B)</option>
+                        <option value="llama3:70b">Llama 3 (70B)</option>
+                        <option value="mistral">Mistral (7B)</option>
+                        <option value="mixtral">Mixtral (8x7B)</option>
+                        <option value="phi">Phi (2.7B)</option>
+                        <option value="gemma:7b">Gemma (7B)</option>
+                    </select>
+                </div>
+                <div class="setting">
+                    <label>Temperature:</label>
+                    <input type="range" id="temp" min="0" max="1" step="0.1" value="0.7">
+                    <span id="temp-val">0.7</span>
+                </div>
+                <div class="setting">
+                    <label>
+                        <input type="checkbox" id="stream" checked> Stream Responses
+                    </label>
+                </div>
+                <div class="setting">
+                    <label>
+                        <input type="checkbox" id="auto-tts" checked> Auto Voice
+                    </label>
+                </div>
+                <div class="setting">
+                    <label>Theme:</label>
+                    <select id="theme">
+                        <option value="cosmic">Cosmic Purple</option>
+                        <option value="blue">Blue</option>
+                        <option value="gold">Gold</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                </div>
+                <button id="test-ollama" class="btn-secondary">Test Connection</button>
+            </div>
+            <div class="modal-footer">
+                <button id="save-settings" class="btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
